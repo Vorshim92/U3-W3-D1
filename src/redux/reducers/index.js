@@ -7,13 +7,18 @@ const initialState = {
 const mainReducer = function (state = initialState, action) {
   switch (action.type) {
     case "ADD_FAVOURITES":
-      return {
-        ...state,
-        favourites: {
-          ...state.favourites,
-          content: state.favourites.content.concat(action.payload),
-        },
-      };
+      if (!state.favourites.content.some((company) => company === action.payload)) {
+        return {
+          ...state,
+          favourites: {
+            ...state.favourites,
+            content: state.favourites.content.concat(action.payload),
+          },
+        };
+      } else {
+        return state;
+      }
+
     case "DELETE_FAVOURITE":
       return {
         ...state,
