@@ -14,6 +14,14 @@ const mainReducer = function (state = initialState, action) {
           content: state.favourites.content.concat(action.payload),
         },
       };
+    case "DELETE_FAVOURITE":
+      return {
+        ...state,
+        favourites: {
+          ...state.favourites,
+          content: state.favourites.content.filter((company, i) => i !== action.payload),
+        },
+      };
     default:
       return state;
   }
