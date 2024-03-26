@@ -2,7 +2,7 @@ import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MdFavorite } from "react-icons/md";
 import { useDispatch } from "react-redux";
-
+import { addToFavourites } from "../redux/actions";
 const Job = ({ data }) => {
   const dispatch = useDispatch();
 
@@ -20,10 +20,7 @@ const Job = ({ data }) => {
         <Button
           className="d-flex align-items-center"
           onClick={() => {
-            dispatch({
-              type: "ADD_FAVOURITES",
-              payload: data.company_name,
-            });
+            dispatch(addToFavourites(data));
           }}
         >
           <span className="me-2">ADD TO</span>

@@ -3,7 +3,7 @@ import { MdFavorite } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaRegTrashAlt } from "react-icons/fa";
-
+import { deleteFromFavourites } from "../redux/actions";
 const Favourites = () => {
   const favorites = useSelector((state) => {
     return state.favourites.content;
@@ -32,10 +32,7 @@ const Favourites = () => {
               <Button
                 className="d-flex align-items-center"
                 onClick={() => {
-                  dispatch({
-                    type: "DELETE_FAVOURITE",
-                    payload: i,
-                  });
+                  dispatch(deleteFromFavourites(i));
                 }}
               >
                 <span className="me-2">REMOVE</span>
