@@ -1,11 +1,10 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import favsReducer from "../reducers/favsReducer";
-
-// poichè la proprietà "reducer" accetta UN SOLO reducer per creare lo store,
-// ho bisogno di ri-costruire la torta!
+import resultReducer from "../reducers/searchResReducer";
 
 const unifiedReducer = combineReducers({
-  favourites: favsReducer, // ricostruisce la fetta user
+  favourites: favsReducer,
+  results: resultReducer,
 });
 
 const store = configureStore({
